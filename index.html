@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Petrichor — Where AI Meets the Real Economy</title>
+  <meta name="description" content="Petrichor is a boutique AI adoption consultancy helping European enterprises in regulated industries adopt Claude AI. Specializing in blockchain/RWA tokenization, energy sector transformation, and MiCA/BaFin compliance." />
+  <meta name="author" content="Ali Ozen" />
+  <meta property="og:title" content="Petrichor — Where AI Meets the Real Economy" />
+  <meta property="og:description" content="Boutique AI adoption consultancy for European enterprises in regulated industries. Claude Partner Network member." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_DE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Petrichor — Where AI Meets the Real Economy" />
+  <meta name="twitter:description" content="Boutique AI adoption consultancy for European enterprises in regulated industries." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #0a0b12;
+      --bg-secondary: #0e0f1a;
+      --bg-card: #12131f;
+      --bg-card-hover: #161828;
+      --accent: #00d4aa;
+      --accent-dim: rgba(0, 212, 170, 0.12);
+      --accent-border: rgba(0, 212, 170, 0.25);
+      --text-primary: #f0f0f0;
+      --text-secondary: #9a9aae;
+      --text-muted: #5a5a72;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-light: rgba(255, 255, 255, 0.04);
+      --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --max-width: 1100px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── GRID BACKGROUND ────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: -30%;
+      left: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(ellipse at center, rgba(0, 212, 170, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 11, 18, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      color: var(--accent) !important;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: rgba(0, 212, 170, 0.18) !important;
+      color: var(--accent) !important;
+    }
+
+    /* ── HERO ───────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.6s 0.1s ease both;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: var(--text-secondary);
+      line-height: 1.55;
+      max-width: 620px;
+      margin-bottom: 44px;
+      font-weight: 400;
+      animation: fadeInUp 0.6s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0a0b12;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0, 212, 170, 0.28);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-meta {
+      margin-top: 60px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s 0.4s ease both;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-stat-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.04em;
+    }
+
+    .hero-stat-num span {
+      color: var(--accent);
+    }
+
+    .hero-stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ── SECTIONS SHARED ────────────────────────────── */
+    section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    .section-header {
+      margin-bottom: 64px;
+    }
+
+    /* ── OPPORTUNITY ────────────────────────────────── */
+    #opportunity {
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.02) 50%, transparent 100%);
+    }
+
+    .opportunity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .opp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .opp-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-3px);
+    }
+
+    .opp-card-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .opp-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .opp-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .opportunity-callout {
+      margin-top: 40px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius);
+      padding: 28px 36px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .opportunity-callout-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .opportunity-callout p {
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .opportunity-callout strong {
+      color: var(--accent);
+    }
+
+    /* ── SERVICES ───────────────────────────────────── */
+    #services {
+      border-top: 1px solid var(--border-light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent-border);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px 10px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── FOUNDER ────────────────────────────────────── */
+    #founder {
+      border-top: 1px solid var(--border-light);
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.015) 50%, transparent 100%);
+    }
+
+    .founder-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .founder-quote {
+      position: relative;
+    }
+
+    .quote-mark {
+      font-size: 80px;
+      line-height: 0.6;
+      color: var(--accent);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    blockquote {
+      font-size: clamp(17px, 2.2vw, 21px);
+      line-height: 1.6;
+      color: var(--text-primary);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .founder-info {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .founder-avatar {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0, 212, 170, 0.06));
+      border: 1px solid var(--accent-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+    }
+
+    .founder-name {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .founder-title {
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .founder-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .credential {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .credential-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+      opacity: 0.7;
+    }
+
+    /* ── CLAUDE PARTNER ─────────────────────────────── */
+    #partner {
+      border-top: 1px solid var(--border-light);
+    }
+
+    .partner-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .partner-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .partner-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 170, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .partner-badge-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .partner-badge-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .partner-badge-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .partner-badge-sub {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .partner-content h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .partner-content p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .partner-points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .partner-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .partner-point-icon {
+      color: var(--accent);
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── CONTACT ────────────────────────────────────── */
+    #contact {
+      border-top: 1px solid var(--border-light);
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.02) 100%);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact-left h2 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .contact-left p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 15px;
+      transition: color 0.2s;
+      padding: 14px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent-border);
+      background: var(--bg-card-hover);
+    }
+
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .contact-link-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-link-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .contact-link-value {
+      font-size: 15px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .contact-right {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+
+    .contact-right h3 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .contact-right p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--text-primary);
+      font-family: var(--font);
+      transition: border-color 0.2s;
+      outline: none;
+      width: 100%;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent-border);
+      box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.07);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-submit {
+      background: var(--accent);
+      color: #0a0b12;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 212, 170, 0.25);
+    }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    /* ── DIVIDER ────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .opportunity-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-inner,
+      .partner-inner,
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .founder-quote {
+        order: 2;
+      }
+
+      .founder-info {
+        order: 1;
+      }
+
+      .hero-meta {
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      section {
+        padding: 72px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .opportunity-callout {
+        flex-direction: column;
+        padding: 24px;
+      }
+
+      .contact-right {
+        padding: 28px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ──────────────────────────────────── -->
+  <nav id="nav">
+    <div class="container">
+      <a href="#hero" class="nav-logo">Petri<span>chor</span></a>
+      <ul class="nav-links">
+        <li><a href="#opportunity">Why Now</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#founder">About</a></li>
+        <li><a href="#partner">Claude Partner</a></li>
+        <li><a href="#contact" class="nav-cta">Talk to us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────────── -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Claude Partner Network · Cologne, Germany</div>
+        <h1>Where AI meets<br /><em>the real economy</em></h1>
+        <p class="hero-sub">
+          Petrichor helps European enterprises in regulated industries — blockchain &amp; RWA tokenization, energy, financial compliance — adopt Claude AI where it actually matters, with the technical depth to back it up.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            Talk to us
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="https://www.anthropic.com/partners" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            Claude Partner Network
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-stat">
+            <div class="hero-stat-num">10<span>+</span></div>
+            <div class="hero-stat-label">Years in energy &amp; infrastructure</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3.5<span>+</span></div>
+            <div class="hero-stat-label">Years blockchain consulting</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">EU</div>
+            <div class="hero-stat-label">MiCA / BaFin regulatory fluency</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">DT</div>
+            <div class="hero-stat-label">Digital Twin Methodology</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── OPPORTUNITY ────────────────────────────────── -->
+  <section id="opportunity">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">The Opportunity</div>
+        <h2 class="section-title">The window for AI adoption<br />in regulated industries is now</h2>
+        <p class="section-subtitle">Enterprises know they need AI. They don't know whom to trust with it — especially in industries where a misstep has regulatory, financial, or operational consequences.</p>
+      </div>
+
+      <div class="opportunity-grid">
+        <div class="opp-card reveal">
+          <div class="opp-card-icon">⚡</div>
+          <h3>Frontier AI is production-ready</h3>
+          <p>Claude is the only frontier AI model available on all three major cloud platforms — AWS, Google Cloud, and Azure. Enterprises already running on these stacks can deploy with confidence and no new vendor lock-in.</p>
+        </div>
+        <div class="opp-card reveal" style="transition-delay: 0.1s">
+          <div class="opp-card-icon">🏛️</div>
+          <h3>Regulation is accelerating, not slowing</h3>
+          <p>MiCA, BaFin guidance, EU AI Act — the regulatory landscape is crystallizing. Early movers who build compliant AI infrastructure now will have a durable competitive advantage over late adopters scrambling to retrofit.</p>
+        </div>
+        <div class="opp-card reveal" style="transition-delay: 0.2s">
+          <div class="opp-card-icon">🔗</div>
+          <h3>RWA tokenization is entering the mainstream</h3>
+          <p>Real-world asset tokenization is graduating from experiment to institutional product. AI-native tokenization workflows — for documentation, compliance, and investor reporting — are the next leverage point.</p>
+        </div>
+        <div class="opp-card reveal" style="transition-delay: 0.3s">
+          <div class="opp-card-icon">🌍</div>
+          <h3>European enterprises lack trusted partners</h3>
+          <p>Most AI consultancies either lack the domain depth for regulated industries or lack the technical credibility to implement production-grade systems. Petrichor is purpose-built for this gap.</p>
+        </div>
+      </div>
+
+      <div class="opportunity-callout reveal">
+        <div class="opportunity-callout-icon">◆</div>
+        <p>
+          <strong>Claude is the only frontier AI on AWS + Google Cloud + Azure.</strong> As an Anthropic Claude Partner, Petrichor brings this infrastructure-grade AI to European enterprises in the sectors where precision, auditability, and regulatory fluency are non-negotiable — backed by the technical depth to implement it right.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── SERVICES ───────────────────────────────────── -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Where We Work</div>
+        <h2 class="section-title">Built for regulated,<br />high-stakes industries</h2>
+        <p class="section-subtitle">Four practice areas where domain expertise and AI implementation capability both matter — and where most consultancies only bring one.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-number">01</div>
+          <h3>Blockchain &amp; RWA Tokenization</h3>
+          <p>AI-powered tokenization workflows for real-world assets. From smart contract integration to institutional DeFi infrastructure, we help financial institutions and asset managers build AI-native operations across the full token lifecycle — issuance, compliance, investor reporting.</p>
+          <div class="service-tags">
+            <span class="tag">RWA Tokenization</span>
+            <span class="tag">Smart Contracts</span>
+            <span class="tag">DeFi Infrastructure</span>
+            <span class="tag">Investor Reporting</span>
+          </div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay: 0.1s">
+          <div class="service-number">02</div>
+          <h3>Energy Sector Transformation</h3>
+          <p>Over a decade of project management in energy and infrastructure, applied to AI-native operations. We help energy companies deploy Claude for asset optimization, grid intelligence, documentation automation, and operational decision support — without disrupting critical infrastructure.</p>
+          <div class="service-tags">
+            <span class="tag">Grid Optimization</span>
+            <span class="tag">Asset Management</span>
+            <span class="tag">Ops Automation</span>
+            <span class="tag">PM Excellence</span>
+          </div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay: 0.2s">
+          <div class="service-number">03</div>
+          <h3>Regulatory Compliance (MiCA / BaFin)</h3>
+          <p>AI tools purpose-built for European regulatory requirements. We develop Claude-powered compliance monitoring, documentation generation, and reporting systems that help regulated entities meet MiCA, BaFin, and EU AI Act obligations — with the audit trail to prove it.</p>
+          <div class="service-tags">
+            <span class="tag">MiCA Compliance</span>
+            <span class="tag">BaFin Reporting</span>
+            <span class="tag">EU AI Act</span>
+            <span class="tag">Audit Trails</span>
+          </div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay: 0.3s">
+          <div class="service-number">04</div>
+          <h3>Enterprise AI Strategy</h3>
+          <p>End-to-end Claude deployment for enterprises that need more than a vendor — they need a trusted implementation partner. From proof-of-concept scoping to production rollout to organizational change management, we design AI adoption paths that actually stick.</p>
+          <div class="service-tags">
+            <span class="tag">Claude Deployment</span>
+            <span class="tag">PoC to Production</span>
+            <span class="tag">Change Management</span>
+            <span class="tag">AI Roadmapping</span>
+          </div>
+        </div>
+
+        <div class="service-card reveal" style="transition-delay: 0.4s">
+          <div class="service-number">05</div>
+          <h3>AI Digital Twin Simulations</h3>
+          <p>Before enterprises commit to AI transformation, we simulate it. Using AI agents as digital twins of your organization, we model how adoption will affect operations, workflows, and revenue — so you transition with confidence, not guesswork.</p>
+          <div class="service-tags">
+            <span class="tag">Digital Twins</span>
+            <span class="tag">Simulation</span>
+            <span class="tag">ROI</span>
+            <span class="tag">Change Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── FOUNDER ────────────────────────────────────── -->
+  <section id="founder">
+    <div class="container">
+      <div class="section-label reveal">The Founder</div>
+      <div class="founder-inner">
+        <div class="founder-info reveal">
+          <div class="founder-avatar">AO</div>
+          <div>
+            <div class="founder-name">Ali Ozen</div>
+            <div class="founder-title">Founder &amp; Principal, Petrichor</div>
+          </div>
+          <div class="founder-credentials">
+            <div class="credential">
+              <div class="credential-dot"></div>
+              <span>Mechanical Engineer + MBA — RWTH Aachen University</span>
+            </div>
+            <div class="credential">
+              <div class="credential-dot"></div>
+              <span>Master's thesis: Real-World Asset Tokenization</span>
+            </div>
+            <div class="credential">
+              <div class="credential-dot"></div>
+              <span>10+ years project management in energy &amp; infrastructure</span>
+            </div>
+            <div class="credential">
+              <div class="credential-dot"></div>
+              <span>3.5+ years blockchain and digital assets consulting</span>
+            </div>
+            <div class="credential">
+              <div class="credential-dot"></div>
+              <span>Based in Cologne, Germany</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="founder-quote reveal" style="transition-delay: 0.15s">
+          <span class="quote-mark">&ldquo;</span>
+          <blockquote>
+            I built Petrichor because I kept seeing the same pattern: enterprises that know they need AI but don't know where to trust the outcome. They've seen the demos. They understand the potential. What they need is a partner who can translate frontier AI capability into something that actually survives contact with their regulatory environment, their operations, their stakeholders.
+            <br /><br />
+            Petrichor is that trust — with the technical depth to back it up.
+            <br /><br />
+            Using AI agents as digital twins, I simulate enterprise adoption scenarios before a single line of production code is written — so clients see the profit impact before they commit.
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── CLAUDE PARTNER ─────────────────────────────── -->
+  <section id="partner">
+    <div class="container">
+      <div class="partner-inner">
+        <div class="partner-badge reveal">
+          <span class="partner-badge-icon">◆</span>
+          <div class="partner-badge-title">Member</div>
+          <div class="partner-badge-name">Anthropic Claude<br />Partner Network</div>
+          <div class="partner-badge-sub">Cologne, Germany · 2025</div>
+        </div>
+
+        <div class="partner-content reveal" style="transition-delay: 0.15s">
+          <div class="section-label">Claude Partner Network</div>
+          <h2>Certified. Trained.<br />Supported by Anthropic.</h2>
+          <p>
+            Petrichor is a member of the Anthropic Claude Partner Network — a $100M global program for organizations helping enterprises adopt Claude AI responsibly and at scale. Membership signals a commitment to safe, effective AI deployment with direct access to Anthropic's latest models, training, and implementation support.
+          </p>
+          <p>
+            For clients in regulated industries, this means your AI investment is backed by a partner with certified expertise, access to the frontier, and accountability that extends to the model provider itself.
+          </p>
+          <div class="partner-points">
+            <div class="partner-point">
+              <span class="partner-point-icon">✓</span>
+              <span>Direct access to Claude models across AWS, Google Cloud, and Azure deployments</span>
+            </div>
+            <div class="partner-point">
+              <span class="partner-point-icon">✓</span>
+              <span>Anthropic training and implementation best practices certification</span>
+            </div>
+            <div class="partner-point">
+              <span class="partner-point-icon">✓</span>
+              <span>Part of a vetted global network of enterprise AI implementation specialists</span>
+            </div>
+            <div class="partner-point">
+              <span class="partner-point-icon">✓</span>
+              <span>European regulatory expertise paired with frontier model capability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── CONTACT ────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-left reveal">
+          <h2>If you're evaluating AI,<br /><em>we should talk.</em></h2>
+          <p>
+            Applications for the Claude Partner Network are open. If your enterprise is navigating AI adoption in a regulated industry — and you need a partner who understands both the technology and the stakes — reach out.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:ali@petrichor.ai" class="contact-link">
+              <div class="contact-link-icon">✉</div>
+              <div class="contact-link-text">
+                <span class="contact-link-label">Email</span>
+                <span class="contact-link-value">ali@petrichor.ai</span>
+              </div>
+            </a>
+            <a href="#" class="contact-link" aria-label="LinkedIn profile">
+              <div class="contact-link-icon">in</div>
+              <div class="contact-link-text">
+                <span class="contact-link-label">LinkedIn</span>
+                <span class="contact-link-value">Ali Ozen · Petrichor</span>
+              </div>
+            </a>
+            <div class="contact-link" style="cursor: default;">
+              <div class="contact-link-icon">📍</div>
+              <div class="contact-link-text">
+                <span class="contact-link-label">Location</span>
+                <span class="contact-link-value">Cologne, Germany · EU</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right reveal" style="transition-delay: 0.15s">
+          <h3>Start the conversation</h3>
+          <p>Tell us about your organization and what you're trying to accomplish. We'll get back to you within one business day.</p>
+          <form class="contact-form" action="mailto:ali@petrichor.ai" method="GET" enctype="text/plain">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Name and role" />
+            </div>
+            <div class="form-group">
+              <label for="org">Organization</label>
+              <input type="text" id="org" name="org" placeholder="Company or institution" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="context">How can Petrichor help?</label>
+              <textarea id="context" name="body" placeholder="Briefly describe your AI adoption challenge or goal..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Petri<span>chor</span></div>
+        <div class="footer-text">© 2025 Petrichor · Cologne, Germany · All rights reserved</div>
+        <div class="footer-links">
+          <a href="mailto:ali@petrichor.ai">ali@petrichor.ai</a>
+          <a href="#hero">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── JS: NAV SCROLL + REVEAL ────────────────────── -->
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Contact form: build mailto on submit
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = this.name.value;
+      const org = this.org.value;
+      const email = this.email.value;
+      const body = this.body.value;
+      const subject = encodeURIComponent('Petrichor — AI Adoption Inquiry');
+      const bodyText = encodeURIComponent(
+        `Name: ${name}\nOrganization: ${org}\nEmail: ${email}\n\n${body}`
+      );
+      window.location.href = `mailto:ali@petrichor.ai?subject=${subject}&body=${bodyText}`;
+    });
+  </script>
+
+</body>
+</html>
