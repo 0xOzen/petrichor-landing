@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Petrichor — Where AI Meets the Real Economy</title>
-  <meta name="description" content="Petrichor is a boutique AI adoption consultancy helping European enterprises in regulated industries adopt Claude AI. Specializing in blockchain/RWA tokenization, energy sector transformation, and MiCA/BaFin compliance." />
-  <meta name="author" content="Ali Ozen" />
-  <meta property="og:title" content="Petrichor — Where AI Meets the Real Economy" />
-  <meta property="og:description" content="Boutique AI adoption consultancy for European enterprises in regulated industries. Claude Partner Network member." />
+  <title>Petrichor — Enterprise AI Adoption</title>
+  <meta name="description" content="Petrichor simulates enterprise AI adoption using digital twins — mapping profit impact, workflow changes, and risk before a single line of production code is written." />
+  <meta property="og:title" content="Petrichor — Enterprise AI Adoption. Proven Before You Deploy." />
+  <meta property="og:description" content="Petrichor simulates your organisation's AI future using digital twin technology — so leadership sees the ROI, the risks, and the roadmap before committing budget." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_DE" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Petrichor — Where AI Meets the Real Economy" />
-  <meta name="twitter:description" content="Boutique AI adoption consultancy for European enterprises in regulated industries." />
+  <meta name="twitter:title" content="Petrichor — Enterprise AI Adoption" />
+  <meta name="twitter:description" content="AI adoption, de-risked. Digital twin simulations for enterprise AI transformation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -24,106 +23,98 @@
     }
 
     :root {
-      --bg-primary: #0a0b12;
-      --bg-secondary: #0e0f1a;
-      --bg-card: #12131f;
-      --bg-card-hover: #161828;
-      --accent: #00d4aa;
-      --accent-dim: rgba(0, 212, 170, 0.12);
-      --accent-border: rgba(0, 212, 170, 0.25);
-      --text-primary: #f0f0f0;
-      --text-secondary: #9a9aae;
-      --text-muted: #5a5a72;
-      --border: rgba(255, 255, 255, 0.07);
+      --navy: #050a1a;
+      --navy-2: #080f22;
+      --navy-3: #0c1530;
+      --navy-card: #0a1020;
+      --navy-card-hover: #0f172a;
+      --teal: #00d4aa;
+      --teal-dim: rgba(0, 212, 170, 0.10);
+      --teal-glow: rgba(0, 212, 170, 0.18);
+      --teal-border: rgba(0, 212, 170, 0.28);
+      --white: #ffffff;
+      --text-primary: #eef2ff;
+      --text-secondary: #8896b0;
+      --text-muted: #4a5a78;
+      --border: rgba(255, 255, 255, 0.06);
       --border-light: rgba(255, 255, 255, 0.04);
-      --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
       --radius: 12px;
       --radius-sm: 8px;
-      --max-width: 1100px;
+      --max-width: 1140px;
+      --transition: 0.25s ease;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font);
-      background-color: var(--bg-primary);
+      background: var(--navy);
       color: var(--text-primary);
       line-height: 1.6;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* ── GRID BACKGROUND ────────────────────────────── */
-    body::before {
-      content: '';
-      position: fixed;
+    /* ─── GRID BACKGROUND ─── */
+    .dot-grid {
+      position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(0, 212, 170, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 212, 170, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
+      background-image: radial-gradient(circle, rgba(0,212,170,0.12) 1px, transparent 1px);
+      background-size: 32px 32px;
       pointer-events: none;
-      z-index: 0;
     }
 
-    body::after {
-      content: '';
-      position: fixed;
-      top: -30%;
-      left: -20%;
-      width: 80%;
-      height: 80%;
-      background: radial-gradient(ellipse at center, rgba(0, 212, 170, 0.05) 0%, transparent 65%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
+    /* ─── UTILITIES ─── */
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 0 24px;
-      position: relative;
-      z-index: 1;
     }
 
-    /* ── NAV ────────────────────────────────────────── */
+    .teal { color: var(--teal); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── NAV ─── */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 20px 0;
-      transition: background 0.3s ease, border-bottom 0.3s ease;
-    }
-
-    nav.scrolled {
-      background: rgba(10, 11, 18, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+      background: rgba(5, 10, 26, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
-    nav .container {
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      height: 64px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
     }
 
     .nav-logo {
-      font-size: 20px;
+      font-size: 1.2rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
       color: var(--text-primary);
-      letter-spacing: -0.03em;
       text-decoration: none;
     }
-
-    .nav-logo span {
-      color: var(--accent);
-    }
+    .nav-logo .teal-end { color: var(--teal); }
 
     .nav-links {
       display: flex;
@@ -131,589 +122,530 @@
       gap: 32px;
       list-style: none;
     }
-
     .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
+      transition: color var(--transition);
     }
-
-    .nav-links a:hover {
-      color: var(--text-primary);
-    }
+    .nav-links a:hover { color: var(--text-primary); }
 
     .nav-cta {
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      color: var(--accent) !important;
-      padding: 8px 18px;
-      border-radius: var(--radius-sm);
-      transition: background 0.2s !important;
+      background: var(--teal);
+      color: var(--navy) !important;
+      font-weight: 600 !important;
+      font-size: 0.875rem !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      transition: opacity var(--transition) !important;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-secondary);
+      border-radius: 2px;
+      transition: var(--transition);
     }
 
-    .nav-cta:hover {
-      background: rgba(0, 212, 170, 0.18) !important;
-      color: var(--accent) !important;
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(5, 10, 26, 0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      z-index: 99;
     }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color var(--transition);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--teal); }
 
-    /* ── HERO ───────────────────────────────────────── */
+    /* ─── HERO ─── */
     #hero {
+      position: relative;
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 120px 0 80px;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,212,170,0.10) 0%, transparent 60%),
+        linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+      z-index: 0;
+    }
+
+    .hero-content {
       position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 80px 24px 100px;
     }
 
-    .hero-inner {
-      max-width: 780px;
-    }
-
-    .hero-eyebrow {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
       border-radius: 100px;
       padding: 6px 14px;
-      font-size: 12px;
+      font-size: 0.75rem;
       font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      margin-bottom: 28px;
-      animation: fadeInUp 0.6s ease both;
+      color: var(--teal);
+      margin-bottom: 32px;
     }
-
-    .hero-eyebrow::before {
-      content: '';
+    .eyebrow-dot {
       width: 6px;
       height: 6px;
+      background: var(--teal);
       border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 2s infinite;
+      animation: pulse 2s ease-in-out infinite;
     }
-
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    h1 {
-      font-size: clamp(38px, 6vw, 68px);
-      font-weight: 700;
-      line-height: 1.08;
-      letter-spacing: -0.04em;
+    .hero-h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--white);
       margin-bottom: 24px;
-      animation: fadeInUp 0.6s 0.1s ease both;
     }
-
-    h1 em {
-      font-style: normal;
-      color: var(--accent);
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--teal);
     }
 
     .hero-sub {
-      font-size: clamp(16px, 2.2vw, 20px);
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: var(--text-secondary);
-      line-height: 1.55;
-      max-width: 620px;
-      margin-bottom: 44px;
+      line-height: 1.65;
+      max-width: 640px;
+      margin: 0 auto 40px;
       font-weight: 400;
-      animation: fadeInUp 0.6s 0.2s ease both;
     }
 
-    .hero-actions {
+    .hero-ctas {
       display: flex;
       gap: 14px;
+      justify-content: center;
       flex-wrap: wrap;
-      animation: fadeInUp 0.6s 0.3s ease both;
+      margin-bottom: 64px;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: #0a0b12;
-      font-weight: 600;
-      font-size: 15px;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.95rem;
       padding: 14px 28px;
-      border-radius: var(--radius-sm);
+      border-radius: 8px;
       text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      transition: opacity var(--transition), transform var(--transition);
+      letter-spacing: -0.01em;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0, 212, 170, 0.28);
-    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 
     .btn-secondary {
       background: transparent;
       color: var(--text-primary);
-      font-weight: 500;
-      font-size: 15px;
+      font-weight: 600;
+      font-size: 0.95rem;
       padding: 14px 28px;
-      border-radius: var(--radius-sm);
+      border-radius: 8px;
       border: 1px solid var(--border);
       text-decoration: none;
-      transition: border-color 0.2s, background 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      transition: border-color var(--transition), background var(--transition);
     }
-
     .btn-secondary:hover {
-      border-color: rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.04);
     }
 
-    .hero-meta {
-      margin-top: 60px;
+    .hero-stats {
       display: flex;
-      gap: 40px;
+      justify-content: center;
+      gap: 0;
       flex-wrap: wrap;
-      animation: fadeInUp 0.6s 0.4s ease both;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.025);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      max-width: 640px;
+      margin: 0 auto;
     }
-
     .hero-stat {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+      flex: 1;
+      min-width: 140px;
+      padding: 20px 16px;
+      border-right: 1px solid var(--border);
+      text-align: center;
     }
-
-    .hero-stat-num {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: -0.04em;
-    }
-
-    .hero-stat-num span {
-      color: var(--accent);
-    }
-
+    .hero-stat:last-child { border-right: none; }
     .hero-stat-label {
-      font-size: 13px;
-      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .hero-stat-val {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
       font-weight: 400;
     }
 
-    /* ── SECTIONS SHARED ────────────────────────────── */
-    section {
-      padding: 100px 0;
-      position: relative;
-      z-index: 1;
-    }
+    /* ─── SECTION BASE ─── */
+    section { padding: 100px 0; }
 
-    .section-label {
-      font-size: 12px;
-      font-weight: 600;
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
+      color: var(--teal);
+      margin-bottom: 14px;
     }
 
     .section-title {
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 700;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.15;
+      color: var(--white);
       margin-bottom: 16px;
     }
 
-    .section-subtitle {
-      font-size: 17px;
+    .section-sub {
+      font-size: 1.05rem;
       color: var(--text-secondary);
-      max-width: 560px;
-      line-height: 1.6;
+      max-width: 580px;
+      line-height: 1.65;
     }
 
     .section-header {
-      margin-bottom: 64px;
+      margin-bottom: 56px;
     }
 
-    /* ── OPPORTUNITY ────────────────────────────────── */
-    #opportunity {
-      background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.02) 50%, transparent 100%);
+    /* ─── WHAT WE DO ─── */
+    #what-we-do {
+      background: var(--navy-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
-    .opportunity-grid {
+    .services-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .opp-card {
-      background: var(--bg-card);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 32px;
-      transition: border-color 0.2s, transform 0.2s;
+      overflow: hidden;
     }
 
-    .opp-card:hover {
-      border-color: var(--accent-border);
-      transform: translateY(-3px);
+    .service-card {
+      background: var(--navy-card);
+      padding: 36px 32px;
+      transition: background var(--transition);
+      position: relative;
+    }
+    .service-card:hover { background: var(--navy-card-hover); }
+
+    .service-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, #071020 0%, #0a1528 100%);
+      border-left: 3px solid var(--teal);
     }
 
-    .opp-card-icon {
+    .service-icon {
       width: 44px;
       height: 44px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 20px;
-      font-size: 20px;
+    }
+    .service-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .opp-card h3 {
-      font-size: 17px;
-      font-weight: 600;
+    .service-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .service-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
       margin-bottom: 10px;
       letter-spacing: -0.02em;
+      line-height: 1.3;
     }
 
-    .opp-card p {
-      font-size: 14px;
+    .service-desc {
+      font-size: 0.9rem;
       color: var(--text-secondary);
-      line-height: 1.65;
-    }
-
-    .opportunity-callout {
-      margin-top: 40px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      border-radius: var(--radius);
-      padding: 28px 36px;
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .opportunity-callout-icon {
-      font-size: 22px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .opportunity-callout p {
-      font-size: 15px;
-      color: var(--text-primary);
       line-height: 1.6;
-    }
-
-    .opportunity-callout strong {
-      color: var(--accent);
-    }
-
-    /* ── SERVICES ───────────────────────────────────── */
-    #services {
-      border-top: 1px solid var(--border-light);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px;
-      transition: border-color 0.3s, transform 0.3s, background 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .service-card:hover {
-      border-color: var(--accent-border);
-      background: var(--bg-card-hover);
-      transform: translateY(-4px);
-    }
-
-    .service-card:hover::before {
-      opacity: 1;
-    }
-
-    .service-number {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      margin-bottom: 20px;
-    }
-
-    .service-card h3 {
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
 
     .service-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
+    }
+    .service-tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: var(--teal-dim);
+      border: 1px solid rgba(0,212,170,0.15);
+      border-radius: 4px;
+      padding: 3px 8px;
     }
 
-    .tag {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 4px 10px;
-      letter-spacing: 0.03em;
+    /* ─── METHOD ─── */
+    #method {
+      background: var(--navy);
     }
 
-    /* ── FOUNDER ────────────────────────────────────── */
-    #founder {
-      border-top: 1px solid var(--border-light);
-      background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.015) 50%, transparent 100%);
-    }
-
-    .founder-inner {
+    .method-steps {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .founder-quote {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
       position: relative;
     }
 
-    .quote-mark {
-      font-size: 80px;
-      line-height: 0.6;
-      color: var(--accent);
-      opacity: 0.3;
-      font-family: Georgia, serif;
+    .method-step {
+      padding: 40px 32px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      background: var(--navy-card);
+      transition: background var(--transition);
+    }
+    .method-step:last-child { border-right: none; }
+    .method-step:hover { background: var(--navy-card-hover); }
+
+    .step-number {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: rgba(0,212,170,0.12);
+      line-height: 1;
       margin-bottom: 20px;
-      display: block;
     }
 
-    blockquote {
-      font-size: clamp(17px, 2.2vw, 21px);
-      line-height: 1.6;
-      color: var(--text-primary);
-      font-weight: 400;
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 12px;
       letter-spacing: -0.01em;
     }
 
-    .founder-info {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
+    .step-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
     }
 
-    .founder-avatar {
-      width: 72px;
-      height: 72px;
-      background: linear-gradient(135deg, var(--accent-dim), rgba(0, 212, 170, 0.06));
-      border: 1px solid var(--accent-border);
-      border-radius: 50%;
+    /* ─── INDUSTRIES ─── */
+    #industries {
+      background: var(--navy-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .industry-tile {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: background var(--transition), border-color var(--transition);
+      cursor: default;
+    }
+    .industry-tile:hover {
+      background: var(--navy-card-hover);
+      border-color: var(--teal-border);
+    }
+
+    .industry-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: -0.03em;
+    }
+    .industry-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .founder-name {
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 4px;
+    .industry-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
     }
 
-    .founder-title {
-      font-size: 14px;
-      color: var(--accent);
-      font-weight: 500;
+    /* ─── WHY PETRICHOR ─── */
+    #why {
+      background: var(--navy);
     }
 
-    .founder-credentials {
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .why-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      transition: border-color var(--transition);
+    }
+    .why-card:hover { border-color: var(--teal-border); }
+
+    .why-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      border-radius: 10px;
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .why-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .credential {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14px;
+    .why-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .why-desc {
+      font-size: 0.9rem;
       color: var(--text-secondary);
-      line-height: 1.5;
+      line-height: 1.65;
     }
 
-    .credential-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-      margin-top: 7px;
-      opacity: 0.7;
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--navy-2);
+      border-top: 1px solid var(--border);
     }
 
-    /* ── CLAUDE PARTNER ─────────────────────────────── */
-    #partner {
-      border-top: 1px solid var(--border-light);
-    }
-
-    .partner-inner {
+    .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
-      align-items: center;
-    }
-
-    .partner-badge {
-      background: var(--bg-card);
-      border: 1px solid var(--accent-border);
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .partner-badge::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(0, 212, 170, 0.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .partner-badge-icon {
-      font-size: 48px;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .partner-badge-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .partner-badge-name {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
-    }
-
-    .partner-badge-sub {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .partner-content h2 {
-      font-size: clamp(24px, 3.5vw, 36px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .partner-content p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .partner-points {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .partner-point {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
-
-    .partner-point-icon {
-      color: var(--accent);
-      font-size: 16px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ── CONTACT ────────────────────────────────────── */
-    #contact {
-      border-top: 1px solid var(--border-light);
-      background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 170, 0.02) 100%);
-    }
-
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
       align-items: start;
     }
 
-    .contact-left h2 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
-      margin-bottom: 20px;
+    .contact-headline {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 16px;
     }
 
-    .contact-left h2 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    .contact-left p {
-      font-size: 16px;
+    .contact-sub {
+      font-size: 1rem;
       color: var(--text-secondary);
       line-height: 1.65;
       margin-bottom: 36px;
@@ -728,643 +660,611 @@
     .contact-link {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
       text-decoration: none;
-      color: var(--text-primary);
-      font-size: 15px;
-      transition: color 0.2s;
-      padding: 14px 18px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      transition: border-color 0.2s, background 0.2s;
+      transition: color var(--transition);
     }
-
-    .contact-link:hover {
-      border-color: var(--accent-border);
-      background: var(--bg-card-hover);
-    }
-
+    .contact-link:hover { color: var(--teal); }
     .contact-link-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--accent-dim);
-      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-border);
+      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
       flex-shrink: 0;
     }
-
-    .contact-link-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .contact-link-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--teal);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .contact-link-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-    }
-
-    .contact-link-value {
-      font-size: 15px;
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-
-    .contact-right {
-      background: var(--bg-card);
+    /* Form */
+    .contact-form {
+      background: var(--navy-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 40px;
-    }
-
-    .contact-right h3 {
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-    }
-
-    .contact-right p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+      padding: 36px;
     }
 
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+      margin-bottom: 18px;
     }
 
-    .form-group label {
-      font-size: 12px;
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
       font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 7px;
     }
 
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: var(--bg-primary);
+    .form-control {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      font-size: 14px;
-      color: var(--text-primary);
+      padding: 11px 14px;
       font-family: var(--font);
-      transition: border-color 0.2s;
+      font-size: 0.9rem;
+      color: var(--text-primary);
       outline: none;
-      width: 100%;
-      appearance: none;
+      transition: border-color var(--transition);
+      -webkit-appearance: none;
+    }
+    .form-control::placeholder { color: var(--text-muted); }
+    .form-control:focus { border-color: var(--teal); }
+
+    select.form-control {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%238896b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='2 4 6 8 10 4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    select.form-control option {
+      background: #0a1020;
+      color: var(--text-primary);
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--accent-border);
-      box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.07);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--text-muted);
-    }
-
-    .form-group textarea {
+    textarea.form-control {
       resize: vertical;
-      min-height: 90px;
+      min-height: 110px;
     }
 
     .form-submit {
-      background: var(--accent);
-      color: #0a0b12;
-      font-weight: 600;
-      font-size: 15px;
-      padding: 14px 24px;
-      border-radius: var(--radius-sm);
-      border: none;
-      cursor: pointer;
-      font-family: var(--font);
-      transition: transform 0.2s, box-shadow 0.2s;
       width: 100%;
+      background: var(--teal);
+      color: var(--navy);
+      font-family: var(--font);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: opacity var(--transition);
+      letter-spacing: -0.01em;
     }
+    .form-submit:hover { opacity: 0.88; }
 
-    .form-submit:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0, 212, 170, 0.25);
-    }
-
-    /* ── FOOTER ─────────────────────────────────────── */
+    /* ─── FOOTER ─── */
     footer {
+      background: var(--navy);
       border-top: 1px solid var(--border);
-      padding: 36px 0;
-      position: relative;
-      z-index: 1;
+      padding: 48px 0 32px;
     }
 
-    .footer-inner {
+    .footer-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
+      gap: 24px;
     }
 
     .footer-logo {
-      font-size: 17px;
+      font-size: 1.2rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
       color: var(--text-primary);
-      letter-spacing: -0.03em;
+      text-decoration: none;
     }
-
-    .footer-logo span {
-      color: var(--accent);
-    }
-
-    .footer-text {
-      font-size: 13px;
+    .footer-tagline {
+      font-size: 0.8rem;
       color: var(--text-muted);
+      margin-top: 4px;
     }
 
     .footer-links {
       display: flex;
-      gap: 24px;
+      gap: 28px;
+      flex-wrap: wrap;
     }
-
     .footer-links a {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
+      font-size: 0.85rem;
       color: var(--text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--teal); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    /* ── DIVIDER ────────────────────────────────────── */
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 0;
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
-    /* ── ANIMATIONS ─────────────────────────────────── */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .footer-partner {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-partner::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────────── */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .opportunity-grid {
-        grid-template-columns: 1fr;
-      }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
 
       .services-grid {
         grid-template-columns: 1fr;
       }
+      .service-card.featured { grid-column: span 1; }
 
-      .founder-inner,
-      .partner-inner,
-      .contact-inner {
+      .method-steps {
+        grid-template-columns: 1fr 1fr;
+      }
+      .method-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .method-step:nth-child(odd) { border-right: 1px solid var(--border); }
+      .method-step:last-child { border-right: none; border-bottom: none; }
+
+      .industries-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
       }
 
-      .founder-quote {
-        order: 2;
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
       }
 
-      .founder-info {
-        order: 1;
-      }
-
-      .hero-meta {
-        gap: 28px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      section {
-        padding: 72px 0;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero-actions {
+      .footer-top {
         flex-direction: column;
         align-items: flex-start;
       }
+    }
 
-      .btn-primary, .btn-secondary {
-        width: 100%;
-        justify-content: center;
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+
+      .method-steps {
+        grid-template-columns: 1fr;
+      }
+      .method-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .method-step:last-child { border-bottom: none; }
+
+      .industries-grid {
+        grid-template-columns: 1fr;
       }
 
-      .opportunity-callout {
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-stat:last-child { border-bottom: none; }
+
+      .footer-bottom {
         flex-direction: column;
-        padding: 24px;
-      }
-
-      .contact-right {
-        padding: 28px 24px;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── NAVIGATION ──────────────────────────────────── -->
-  <nav id="nav">
-    <div class="container">
-      <a href="#hero" class="nav-logo">Petri<span>chor</span></a>
+  <!-- ─── NAV ─── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Petric<span class="teal-end">hor</span></a>
       <ul class="nav-links">
-        <li><a href="#opportunity">Why Now</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#founder">About</a></li>
-        <li><a href="#partner">Claude Partner</a></li>
-        <li><a href="#contact" class="nav-cta">Talk to us</a></li>
+        <li><a href="#what-we-do">What We Do</a></li>
+        <li><a href="#method">Our Method</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#why">Results</a></li>
+        <li><a href="#contact" class="nav-cta">Start a Simulation</a></li>
       </ul>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- ── HERO ───────────────────────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#what-we-do">What We Do</a>
+    <a href="#method">Our Method</a>
+    <a href="#industries">Industries</a>
+    <a href="#why">Results</a>
+    <a href="#contact" style="color:var(--teal)">Start a Simulation →</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
   <section id="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div class="hero-eyebrow">AI Digital Twin Simulations · Claude Partner Network · Cologne, Germany</div>
-        <h1>See your AI future<br /><em>before you invest in it</em></h1>
-        <p class="hero-sub">
-          I simulate how your company adopts AI — before you spend a euro. Using AI agents as digital twins of your organisation, I model the profit impact, workflow changes, and risks of AI adoption. You see the outcome before you commit.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-primary">
-            Book a Simulation
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-          </a>
-          <a href="https://www.anthropic.com/partners" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-            Claude Partner Network
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
+    <div class="hero-bg"></div>
+    <div class="dot-grid"></div>
+    <div class="hero-content">
+      <div class="eyebrow reveal">
+        <span class="eyebrow-dot"></span>
+        Claude Partner Network &mdash; Anthropic
+      </div>
+      <h1 class="hero-h1 reveal">
+        Enterprise AI Adoption.<br><em>Proven Before You Deploy.</em>
+      </h1>
+      <p class="hero-sub reveal">
+        Petrichor simulates your organisation's AI future using digital twin technology &mdash; so leadership sees the ROI, the risks, and the roadmap before committing budget.
+      </p>
+      <div class="hero-ctas reveal">
+        <a href="#contact" class="btn-primary">Request a Simulation</a>
+        <a href="#method" class="btn-secondary">How It Works</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="hero-stat">
+          <span class="hero-stat-label">F500</span>
+          <span class="hero-stat-val">Fortune 500 Ready</span>
         </div>
-        <div class="hero-meta">
-          <div class="hero-stat">
-            <div class="hero-stat-num">10<span>+</span></div>
-            <div class="hero-stat-label">Years in energy &amp; infrastructure</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">3.5<span>+</span></div>
-            <div class="hero-stat-label">Years blockchain consulting</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">EU</div>
-            <div class="hero-stat-label">MiCA / BaFin regulatory fluency</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">DT</div>
-            <div class="hero-stat-label">Digital Twin Methodology</div>
-          </div>
+        <div class="hero-stat">
+          <span class="hero-stat-label">EU</span>
+          <span class="hero-stat-val">Regulatory Fluent</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-label">CPN</span>
+          <span class="hero-stat-val">Claude Certified</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-label">DT</span>
+          <span class="hero-stat-val">Digital Twin Method</span>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ── OPPORTUNITY ────────────────────────────────── -->
-  <section id="opportunity">
+  <!-- ─── WHAT WE DO ─── -->
+  <section id="what-we-do">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-label">The Opportunity</div>
-        <h2 class="section-title">The window for AI adoption<br />in regulated industries is now</h2>
-        <p class="section-subtitle">Enterprises know they need AI. They don't know whom to trust with it — especially in industries where a misstep has regulatory, financial, or operational consequences.</p>
+        <span class="section-eyebrow">What We Do</span>
+        <h2 class="section-title">Five practice areas.<br>One integrated firm.</h2>
+        <p class="section-sub">From simulation to deployment, Petrichor covers the full lifecycle of enterprise AI adoption across the industries that demand precision.</p>
       </div>
-
-      <div class="opportunity-grid">
-        <div class="opp-card reveal">
-          <div class="opp-card-icon">⚡</div>
-          <h3>Frontier AI is production-ready</h3>
-          <p>Claude is the only frontier AI model available on all three major cloud platforms — AWS, Google Cloud, and Azure. Enterprises already running on these stacks can deploy with confidence and no new vendor lock-in.</p>
-        </div>
-        <div class="opp-card reveal" style="transition-delay: 0.1s">
-          <div class="opp-card-icon">🏛️</div>
-          <h3>Regulation is accelerating, not slowing</h3>
-          <p>MiCA, BaFin guidance, EU AI Act — the regulatory landscape is crystallizing. Early movers who build compliant AI infrastructure now will have a durable competitive advantage over late adopters scrambling to retrofit.</p>
-        </div>
-        <div class="opp-card reveal" style="transition-delay: 0.2s">
-          <div class="opp-card-icon">🔗</div>
-          <h3>RWA tokenization is entering the mainstream</h3>
-          <p>Real-world asset tokenization is graduating from experiment to institutional product. AI-native tokenization workflows — for documentation, compliance, and investor reporting — are the next leverage point.</p>
-        </div>
-        <div class="opp-card reveal" style="transition-delay: 0.3s">
-          <div class="opp-card-icon">🌍</div>
-          <h3>European enterprises lack trusted partners</h3>
-          <p>Most AI consultancies either lack the domain depth for regulated industries or lack the technical credibility to implement production-grade systems. Petrichor is purpose-built for this gap.</p>
-        </div>
-      </div>
-
-      <div class="opportunity-callout reveal">
-        <div class="opportunity-callout-icon">◆</div>
-        <p>
-          <strong>Claude is the only frontier AI on AWS + Google Cloud + Azure.</strong> As an Anthropic Claude Partner, Petrichor brings this infrastructure-grade AI to European enterprises in the sectors where precision, auditability, and regulatory fluency are non-negotiable — backed by the technical depth to implement it right.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- ── SERVICES ───────────────────────────────────── -->
-  <section id="services">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="section-label">Where We Work</div>
-        <h2 class="section-title">Built for regulated,<br />high-stakes industries</h2>
-        <p class="section-subtitle">Four practice areas where domain expertise and AI implementation capability both matter — and where most consultancies only bring one.</p>
-      </div>
-
       <div class="services-grid">
+
+        <!-- Card 1 — Featured -->
+        <div class="service-card featured reveal">
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          </div>
+          <div class="service-title">AI Digital Twin Simulations</div>
+          <p class="service-desc">Simulate your entire organisation's AI adoption before deployment. Agent-based modelling maps ROI, bottlenecks, and change management requirements — so leadership approves investment based on data, not promises.</p>
+          <div class="service-tags">
+            <span class="service-tag">simulation</span>
+            <span class="service-tag">digital-twins</span>
+            <span class="service-tag">ROI</span>
+            <span class="service-tag">change-management</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
         <div class="service-card reveal">
-          <div class="service-number">01</div>
-          <h3>Blockchain &amp; RWA Tokenization</h3>
-          <p>AI-powered tokenization workflows for real-world assets. From smart contract integration to institutional DeFi infrastructure, we help financial institutions and asset managers build AI-native operations across the full token lifecycle — issuance, compliance, investor reporting.</p>
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <div class="service-title">Enterprise AI Strategy</div>
+          <p class="service-desc">From proof-of-concept to production. We design Claude deployment architecture, governance frameworks, and adoption roadmaps for complex enterprises.</p>
           <div class="service-tags">
-            <span class="tag">RWA Tokenization</span>
-            <span class="tag">Smart Contracts</span>
-            <span class="tag">DeFi Infrastructure</span>
-            <span class="tag">Investor Reporting</span>
+            <span class="service-tag">strategy</span>
+            <span class="service-tag">claude</span>
+            <span class="service-tag">deployment</span>
+            <span class="service-tag">governance</span>
           </div>
         </div>
 
-        <div class="service-card reveal" style="transition-delay: 0.1s">
-          <div class="service-number">02</div>
-          <h3>Energy Sector Transformation</h3>
-          <p>Over a decade of project management in energy and infrastructure, applied to AI-native operations. We help energy companies deploy Claude for asset optimization, grid intelligence, documentation automation, and operational decision support — without disrupting critical infrastructure.</p>
+        <!-- Card 3 -->
+        <div class="service-card reveal">
+          <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="service-title">Blockchain &amp; RWA Tokenization</div>
+          <p class="service-desc">AI-powered tokenization workflows for real-world assets. Smart contract integration, institutional DeFi, and compliant issuance infrastructure.</p>
           <div class="service-tags">
-            <span class="tag">Grid Optimization</span>
-            <span class="tag">Asset Management</span>
-            <span class="tag">Ops Automation</span>
-            <span class="tag">PM Excellence</span>
+            <span class="service-tag">RWA</span>
+            <span class="service-tag">tokenization</span>
+            <span class="service-tag">DeFi</span>
+            <span class="service-tag">smart-contracts</span>
           </div>
         </div>
 
-        <div class="service-card reveal" style="transition-delay: 0.2s">
-          <div class="service-number">03</div>
-          <h3>Regulatory Compliance (MiCA / BaFin)</h3>
-          <p>AI tools purpose-built for European regulatory requirements. We develop Claude-powered compliance monitoring, documentation generation, and reporting systems that help regulated entities meet MiCA, BaFin, and EU AI Act obligations — with the audit trail to prove it.</p>
+        <!-- Card 4 -->
+        <div class="service-card reveal">
+          <div class="service-num">04</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="service-title">Energy Sector Transformation</div>
+          <p class="service-desc">AI adoption for energy infrastructure &mdash; grid optimisation, asset management, operational efficiency. Deep sector expertise in EU energy markets.</p>
           <div class="service-tags">
-            <span class="tag">MiCA Compliance</span>
-            <span class="tag">BaFin Reporting</span>
-            <span class="tag">EU AI Act</span>
-            <span class="tag">Audit Trails</span>
+            <span class="service-tag">energy</span>
+            <span class="service-tag">infrastructure</span>
+            <span class="service-tag">operations</span>
+            <span class="service-tag">EU</span>
           </div>
         </div>
 
-        <div class="service-card reveal" style="transition-delay: 0.3s">
-          <div class="service-number">04</div>
-          <h3>Enterprise AI Strategy</h3>
-          <p>End-to-end Claude deployment for enterprises that need more than a vendor — they need a trusted implementation partner. From proof-of-concept scoping to production rollout to organizational change management, we design AI adoption paths that actually stick.</p>
+        <!-- Card 5 -->
+        <div class="service-card reveal">
+          <div class="service-num">05</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="service-title">MiCA / BaFin Compliance</div>
+          <p class="service-desc">Regulatory AI tooling for European financial institutions. Compliance documentation, monitoring, and reporting systems built for MiCA and BaFin requirements.</p>
           <div class="service-tags">
-            <span class="tag">Claude Deployment</span>
-            <span class="tag">PoC to Production</span>
-            <span class="tag">Change Management</span>
-            <span class="tag">AI Roadmapping</span>
+            <span class="service-tag">MiCA</span>
+            <span class="service-tag">BaFin</span>
+            <span class="service-tag">compliance</span>
+            <span class="service-tag">fintech</span>
           </div>
         </div>
 
-        <div class="service-card reveal" style="transition-delay: 0.4s">
-          <div class="service-number">05</div>
-          <h3>AI Digital Twin Simulations</h3>
-          <p>Before enterprises commit to AI transformation, we simulate it. Using AI agents as digital twins of your organization, we model how adoption will affect operations, workflows, and revenue — so you transition with confidence, not guesswork.</p>
-          <div class="service-tags">
-            <span class="tag">Digital Twins</span>
-            <span class="tag">Simulation</span>
-            <span class="tag">ROI</span>
-            <span class="tag">Change Management</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ── FOUNDER ────────────────────────────────────── -->
-  <section id="founder">
+  <!-- ─── OUR METHOD ─── -->
+  <section id="method">
     <div class="container">
-      <div class="section-label reveal">The Founder</div>
-      <div class="founder-inner">
-        <div class="founder-info reveal">
-          <div class="founder-avatar">AO</div>
-          <div>
-            <div class="founder-name">Ali Ozen</div>
-            <div class="founder-title">Founder &amp; Principal, Petrichor</div>
-          </div>
-          <div class="founder-credentials">
-            <div class="credential">
-              <div class="credential-dot"></div>
-              <span>Mechanical Engineer + MBA — RWTH Aachen University</span>
-            </div>
-            <div class="credential">
-              <div class="credential-dot"></div>
-              <span>Master's thesis: Real-World Asset Tokenization</span>
-            </div>
-            <div class="credential">
-              <div class="credential-dot"></div>
-              <span>10+ years project management in energy &amp; infrastructure</span>
-            </div>
-            <div class="credential">
-              <div class="credential-dot"></div>
-              <span>3.5+ years blockchain and digital assets consulting</span>
-            </div>
-            <div class="credential">
-              <div class="credential-dot"></div>
-              <span>Based in Cologne, Germany</span>
-            </div>
-          </div>
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Method</span>
+        <h2 class="section-title">Simulate first.<br>Deploy with confidence.</h2>
+        <p class="section-sub">A four-stage process engineered to eliminate deployment risk and align leadership before a single line of production code is written.</p>
+      </div>
+      <div class="method-steps">
+        <div class="method-step reveal">
+          <div class="step-number">01</div>
+          <div class="step-title">Simulate</div>
+          <p class="step-desc">We build a digital twin of your organisation using AI agents. Your workflows, teams, and processes &mdash; modelled before any commitment.</p>
         </div>
-
-        <div class="founder-quote reveal" style="transition-delay: 0.15s">
-          <span class="quote-mark">&ldquo;</span>
-          <blockquote>
-            I built Petrichor because I kept seeing the same pattern: enterprises that know they need AI but don't know where to trust the outcome. They've seen the demos. They understand the potential. What they need is a partner who can translate frontier AI capability into something that actually survives contact with their regulatory environment, their operations, their stakeholders.
-            <br /><br />
-            Petrichor is that trust — with the technical depth to back it up.
-            <br /><br />
-            Using AI agents as digital twins, I simulate enterprise adoption scenarios before a single line of production code is written — so clients see the profit impact before they commit.
-          </blockquote>
+        <div class="method-step reveal">
+          <div class="step-number">02</div>
+          <div class="step-title">Analyse</div>
+          <p class="step-desc">The simulation surfaces profit impact, friction points, compliance risks, and adoption velocity. Data-driven, not theoretical.</p>
+        </div>
+        <div class="method-step reveal">
+          <div class="step-number">03</div>
+          <div class="step-title">Design</div>
+          <p class="step-desc">We architect the Claude deployment: integration points, governance, change management, and success metrics.</p>
+        </div>
+        <div class="method-step reveal">
+          <div class="step-number">04</div>
+          <div class="step-title">Deploy</div>
+          <p class="step-desc">Implementation support from pilot to production. We stay until it works.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ── CLAUDE PARTNER ─────────────────────────────── -->
-  <section id="partner">
+  <!-- ─── INDUSTRIES ─── -->
+  <section id="industries">
     <div class="container">
-      <div class="partner-inner">
-        <div class="partner-badge reveal">
-          <span class="partner-badge-icon">◆</span>
-          <div class="partner-badge-title">Member</div>
-          <div class="partner-badge-name">Anthropic Claude<br />Partner Network</div>
-          <div class="partner-badge-sub">Cologne, Germany · 2025</div>
-        </div>
-
-        <div class="partner-content reveal" style="transition-delay: 0.15s">
-          <div class="section-label">Claude Partner Network</div>
-          <h2>Certified. Trained.<br />Supported by Anthropic.</h2>
-          <p>
-            Petrichor is a member of the Anthropic Claude Partner Network — a $100M global program for organizations helping enterprises adopt Claude AI responsibly and at scale. Membership signals a commitment to safe, effective AI deployment with direct access to Anthropic's latest models, training, and implementation support.
-          </p>
-          <p>
-            For clients in regulated industries, this means your AI investment is backed by a partner with certified expertise, access to the frontier, and accountability that extends to the model provider itself.
-          </p>
-          <div class="partner-points">
-            <div class="partner-point">
-              <span class="partner-point-icon">✓</span>
-              <span>Direct access to Claude models across AWS, Google Cloud, and Azure deployments</span>
-            </div>
-            <div class="partner-point">
-              <span class="partner-point-icon">✓</span>
-              <span>Anthropic training and implementation best practices certification</span>
-            </div>
-            <div class="partner-point">
-              <span class="partner-point-icon">✓</span>
-              <span>Part of a vetted global network of enterprise AI implementation specialists</span>
-            </div>
-            <div class="partner-point">
-              <span class="partner-point-icon">✓</span>
-              <span>European regulatory expertise paired with frontier model capability</span>
-            </div>
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Industries</span>
+        <h2 class="section-title">Sector expertise.<br>Regulatory fluency.</h2>
+        <p class="section-sub">Petrichor operates where the stakes are highest &mdash; regulated industries where AI adoption carries both the greatest upside and the greatest complexity.</p>
+      </div>
+      <div class="industries-grid">
+        <div class="industry-tile reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
           </div>
+          <span class="industry-name">Financial Services &amp; Banking</span>
+        </div>
+        <div class="industry-tile reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <span class="industry-name">Asset Management &amp; RWA</span>
+        </div>
+        <div class="industry-tile reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <span class="industry-name">Energy &amp; Infrastructure</span>
+        </div>
+        <div class="industry-tile reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="industry-name">Regulatory &amp; Compliance</span>
+        </div>
+        <div class="industry-tile reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 3H8a2 2 0 00-2 2v2h12V5a2 2 0 00-2-2z"/></svg>
+          </div>
+          <span class="industry-name">Professional Services</span>
+        </div>
+        <div class="industry-tile reveal">
+          <div class="industry-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <span class="industry-name">Enterprise Technology</span>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <!-- ─── WHY PETRICHOR ─── -->
+  <section id="why">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Why Petrichor</span>
+        <h2 class="section-title">The de-risked path<br>to enterprise AI.</h2>
+        <p class="section-sub">Three structural advantages that set Petrichor apart from generalist consultancies and pure-play AI vendors.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="why-title">De-risked Adoption</div>
+          <p class="why-desc">Simulation eliminates guesswork. Leadership approves AI investment based on modelled outcomes &mdash; profit impact, adoption friction, compliance flags &mdash; not vendor promises.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div class="why-title">Claude Partner Network</div>
+          <p class="why-desc">Petrichor is a certified member of the Anthropic Claude Partner Network. Direct access to training, technical support, and early programme access for our clients.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <div class="why-title">European Expertise</div>
+          <p class="why-desc">Deep fluency in EU regulatory landscape &mdash; MiCA, BaFin, GDPR &mdash; combined with enterprise AI deployment experience across regulated industries on the continent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ── CONTACT ────────────────────────────────────── -->
+  <!-- ─── CONTACT ─── -->
   <section id="contact">
     <div class="container">
-      <div class="contact-inner">
-        <div class="contact-left reveal">
-          <h2>If you're evaluating AI,<br /><em>we should talk.</em></h2>
-          <p>
-            Applications for the Claude Partner Network are open. If your enterprise is navigating AI adoption in a regulated industry — and you need a partner who understands both the technology and the stakes — reach out.
-          </p>
+      <div class="contact-grid">
+        <div class="reveal">
+          <span class="section-eyebrow">Contact</span>
+          <h2 class="contact-headline">Start your<br>AI simulation.</h2>
+          <p class="contact-sub">Tell us about your organisation and we'll design a simulation tailored to your industry and adoption goals.</p>
           <div class="contact-links">
-            <a href="mailto:ali@petrichor.ai" class="contact-link">
-              <div class="contact-link-icon">✉</div>
-              <div class="contact-link-text">
-                <span class="contact-link-label">Email</span>
-                <span class="contact-link-value">ali@petrichor.ai</span>
+            <a href="mailto:hello@petrichors.com" class="contact-link">
+              <div class="contact-link-icon">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
+              hello@petrichors.com
             </a>
-            <a href="#" class="contact-link" aria-label="LinkedIn profile">
-              <div class="contact-link-icon">in</div>
-              <div class="contact-link-text">
-                <span class="contact-link-label">LinkedIn</span>
-                <span class="contact-link-value">Ali Ozen · Petrichor</span>
+            <a href="#" class="contact-link">
+              <div class="contact-link-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
+              Cologne, Germany &middot; European Union
             </a>
-            <div class="contact-link" style="cursor: default;">
-              <div class="contact-link-icon">📍</div>
-              <div class="contact-link-text">
-                <span class="contact-link-label">Location</span>
-                <span class="contact-link-value">Cologne, Germany · EU</span>
+            <a href="https://linkedin.com/company/petrichor" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <div class="contact-link-icon">
+                <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               </div>
-            </div>
+              linkedin.com/company/petrichor
+            </a>
           </div>
         </div>
-
-        <div class="contact-right reveal" style="transition-delay: 0.15s">
-          <h3>Start the conversation</h3>
-          <p>Tell us about your organization and what you're trying to accomplish. We'll get back to you within one business day.</p>
-          <form class="contact-form" action="mailto:ali@petrichor.ai" method="GET" enctype="text/plain">
+        <div class="reveal">
+          <form class="contact-form" id="contactForm">
             <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Name and role" />
+              <label class="form-label" for="name">Name</label>
+              <input class="form-control" id="name" name="name" type="text" placeholder="Jane Smith" required />
             </div>
             <div class="form-group">
-              <label for="org">Organization</label>
-              <input type="text" id="org" name="org" placeholder="Company or institution" />
+              <label class="form-label" for="company">Company</label>
+              <input class="form-control" id="company" name="company" type="text" placeholder="Acme Corp" required />
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="your@company.com" />
+              <label class="form-label" for="industry">Industry</label>
+              <select class="form-control" id="industry" name="industry" required>
+                <option value="" disabled selected>Select your industry</option>
+                <option>Financial Services &amp; Banking</option>
+                <option>Asset Management &amp; RWA</option>
+                <option>Energy &amp; Infrastructure</option>
+                <option>Regulatory &amp; Compliance</option>
+                <option>Professional Services</option>
+                <option>Enterprise Technology</option>
+                <option>Other</option>
+              </select>
             </div>
             <div class="form-group">
-              <label for="context">How can Petrichor help?</label>
-              <textarea id="context" name="body" placeholder="Briefly describe your AI adoption challenge or goal..."></textarea>
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-control" id="message" name="message" placeholder="Tell us about your organisation and what you're trying to achieve..." required></textarea>
             </div>
-            <button type="submit" class="form-submit">Send Message →</button>
+            <button type="submit" class="form-submit">Request Simulation</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── FOOTER ─────────────────────────────────────── -->
+  <!-- ─── FOOTER ─── -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-logo">Petri<span>chor</span></div>
-        <div class="footer-text">© 2025 Petrichor · Cologne, Germany · All rights reserved</div>
-        <div class="footer-links">
-          <a href="mailto:ali@petrichor.ai">ali@petrichor.ai</a>
-          <a href="#hero">Back to top ↑</a>
+      <div class="footer-top">
+        <div>
+          <a href="#" class="footer-logo">Petric<span class="teal">hor</span></a>
+          <div class="footer-tagline">AI adoption, de-risked.</div>
         </div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="https://anthropic.com" target="_blank" rel="noopener noreferrer">Claude Partner Network</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Petrichor. All rights reserved.</span>
+        <span class="footer-partner">Petrichor is a member of the Anthropic Claude Partner Network.</span>
       </div>
     </div>
   </footer>
 
-  <!-- ── JS: NAV SCROLL + REVEAL ────────────────────── -->
   <script>
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
+    // Mobile menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
 
-    // Intersection Observer for reveal animations
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1372,24 +1272,26 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 5) * 80}ms`;
+      observer.observe(el);
+    });
 
-    // Contact form: build mailto on submit
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = this.name.value;
-      const org = this.org.value;
-      const email = this.email.value;
-      const body = this.body.value;
-      const subject = encodeURIComponent('Petrichor — AI Adoption Inquiry');
-      const bodyText = encodeURIComponent(
-        `Name: ${name}\nOrganization: ${org}\nEmail: ${email}\n\n${body}`
+      const name = document.getElementById('name').value;
+      const company = document.getElementById('company').value;
+      const industry = document.getElementById('industry').value;
+      const message = document.getElementById('message').value;
+      const body = encodeURIComponent(
+        `Name: ${name}\nCompany: ${company}\nIndustry: ${industry}\n\n${message}`
       );
-      window.location.href = `mailto:ali@petrichor.ai?subject=${subject}&body=${bodyText}`;
+      const subject = encodeURIComponent(`AI Simulation Request — ${company}`);
+      window.location.href = `mailto:hello@petrichors.com?subject=${subject}&body=${body}`;
     });
   </script>
-
 </body>
 </html>
